@@ -27,7 +27,7 @@ const addResearchFigure = (card, src, alt, extraClass = '') => {
 
 addResearchFigure(
   researchCards[1],
-  'assets/research-quantum-materials.jpg',
+  'assets/fig24website.png',
   'Molecular structure illustrating a low-dimensional hybrid material.',
   'research-figure-hybrid'
 );
