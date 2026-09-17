@@ -25,6 +25,15 @@ const addResearchFigure = (card, src, alt, extraClass = '') => {
   }
 };
 
+// Section 1
+addResearchFigure(
+  researchCards[0],
+  'assets/fig24website.png',
+  'Exciton and optical response illustration.',
+  'research-figure-optics'
+);
+
+// Section 2
 addResearchFigure(
   researchCards[1],
   'assets/fig24website.png',
@@ -32,22 +41,17 @@ addResearchFigure(
   'research-figure-hybrid'
 );
 
+// Section 3
 addResearchFigure(
   researchCards[2],
-  'assets/fig24website.png',
-  'Molecular structure illustrating a low-dimensional hybrid material.',
-  'research-figure-hybrid'
-);
-
-addResearchFigure(
-  researchCards[3],
   'assets/fig34website.png',
   'Exciton phonon bottleneck diagram showing bright, dark and gray exciton branches.',
   'research-figure-phonons'
 );
 
+// Section 4
 addResearchFigure(
-  researchCards[4],
+  researchCards[3],
   'assets/research-quantum-materials.jpg',
   'Illustration of topological and trivial exciton transport with phonon scattering.',
   'research-figure-quantum'
