@@ -1,10 +1,6 @@
 const nav = document.querySelector('.site-nav');
 const talksSection = document.getElementById('talks');
 
-// Update homepage hero title.
-const heroTitle = document.querySelector('.hero-copy h1');
-if (heroTitle) heroTitle.textContent = 'Where light and energy meet in materials';
-
 // Ensure Collaborators and Supervision appear in the main navigation.
 if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   const talksLink = nav.querySelector('a[href="#talks"]');
@@ -24,6 +20,53 @@ if (nav && !nav.querySelector('a[href="#collaborators"]')) {
     nav.append(collaboratorsLink, supervisionLink);
   }
 }
+
+// Add research figures to cards 3 and 4.
+const researchCards = document.querySelectorAll('#research .research-card');
+const addResearchFigure = (card, src, alt) => {
+  if (!card || card.querySelector('.research-figure')) return;
+  const figure = document.createElement('figure');
+  figure.className = 'research-figure';
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = alt;
+  img.loading = 'lazy';
+  figure.appendChild(img);
+  const heading = card.querySelector('h3');
+  if (heading) card.insertBefore(figure, heading);
+};
+
+addResearchFigure(
+  researchCards[2],
+  'assets/research-phonons.jpg',
+  'Exciton phonon bottleneck diagram showing bright, dark and gray exciton branches.'
+);
+addResearchFigure(
+  researchCards[3],
+  'assets/research-quantum-materials.jpg',
+  'Illustration of topological and trivial exciton transport with phonon scattering.'
+);
+
+const researchFigureStyle = document.createElement('style');
+researchFigureStyle.textContent = `
+  .research-card .research-figure {
+    margin: 18px 0 22px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(237,169,137,.12);
+  }
+  .research-card .research-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+  .research-card:has(.research-figure) h3 {
+    margin-top: 18px;
+  }
+`;
+document.head.appendChild(researchFigureStyle);
 
 // Keep the collaborators section in sync regardless of the markup in index.html.
 let collaboratorsSection = document.getElementById('collaborators');
