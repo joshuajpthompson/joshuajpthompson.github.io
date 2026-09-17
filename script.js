@@ -26,6 +26,13 @@ const addResearchFigure = (card, src, alt, extraClass = '') => {
 };
 
 addResearchFigure(
+  researchCards[0],
+  'assets/fig24website.png',
+  'Molecular structure illustrating a low-dimensional hybrid material.',
+  'research-figure-hybrid'
+);
+
+addResearchFigure(
   researchCards[1],
   'assets/fig24website.png',
   'Molecular structure illustrating a low-dimensional hybrid material.',
