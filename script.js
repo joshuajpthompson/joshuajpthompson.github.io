@@ -4,6 +4,7 @@ const talksSection = document.getElementById('talks');
 // Ensure Collaborators and Supervision appear in the main navigation.
 if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   const talksLink = nav.querySelector('a[href="#talks"]');
+
   const collaboratorsLink = document.createElement('a');
   collaboratorsLink.href = '#collaborators';
   collaboratorsLink.textContent = 'Collaborators';
@@ -20,12 +21,16 @@ if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   }
 }
 
-// Create the collaborators section if needed, then keep its list in sync.
+// Keep the collaborators section in sync regardless of the markup in index.html.
 let collaboratorsSection = document.getElementById('collaborators');
-if (talksSection && !collaboratorsSection) {
+if (!collaboratorsSection && talksSection) {
   collaboratorsSection = document.createElement('section');
   collaboratorsSection.id = 'collaborators';
   collaboratorsSection.className = 'section section-wrap';
+  talksSection.parentNode.insertBefore(collaboratorsSection, talksSection);
+}
+
+if (collaboratorsSection) {
   collaboratorsSection.innerHTML = `
     <div class="section-head split-head">
       <div>
@@ -37,14 +42,8 @@ if (talksSection && !collaboratorsSection) {
         low-dimensional materials, optoelectronics and quantum materials.
       </p>
     </div>
-    <div class="timeline"></div>`;
-  talksSection.parentNode.insertBefore(collaboratorsSection, talksSection);
-}
 
-if (collaboratorsSection) {
-  const timeline = collaboratorsSection.querySelector('.timeline');
-  if (timeline) {
-    timeline.innerHTML = `
+    <div class="timeline">
       <article class="timeline-item"><span class="timeline-label">Bartomeu Monserrat</span><div><h3>University of Cambridge</h3><p>United Kingdom</p></div></article>
       <article class="timeline-item"><span class="timeline-label">Ermin Malic</span><div><h3>Philipps-Universität Marburg</h3><p>Germany</p></div></article>
       <article class="timeline-item"><span class="timeline-label">Wojciech J. Jankowski</span><div><h3>University of Cambridge</h3><p>United Kingdom</p></div></article>
@@ -54,16 +53,21 @@ if (collaboratorsSection) {
       <article class="timeline-item"><span class="timeline-label">Libai Huang</span><div><h3>Purdue University</h3><p>United States</p></div></article>
       <article class="timeline-item"><span class="timeline-label">Richard Friend</span><div><h3>University of Cambridge</h3><p>United Kingdom</p></div></article>
       <article class="timeline-item"><span class="timeline-label">Marcin Mucha-Kruczyński</span><div><h3>University of Bath</h3><p>United Kingdom</p></div></article>
-      <article class="timeline-item"><span class="timeline-label">Aran García-Lekue</span><div><h3>University of the Basque Country (UPV/EHU) / Donostia International Physics Center</h3><p>Spain</p></div></article>`;
-  }
+      <article class="timeline-item"><span class="timeline-label">Aran García-Lekue</span><div><h3>University of the Basque Country (UPV/EHU) / Donostia International Physics Center</h3><p>Spain</p></div></article>
+    </div>`;
 }
 
-// Add supervision section directly before talks if it is missing.
-if (talksSection && !document.getElementById('supervision')) {
-  const supervision = document.createElement('section');
-  supervision.id = 'supervision';
-  supervision.className = 'section section-wrap';
-  supervision.innerHTML = `
+// Keep supervision content in sync as well.
+let supervisionSection = document.getElementById('supervision');
+if (!supervisionSection && talksSection) {
+  supervisionSection = document.createElement('section');
+  supervisionSection.id = 'supervision';
+  supervisionSection.className = 'section section-wrap';
+  talksSection.parentNode.insertBefore(supervisionSection, talksSection);
+}
+
+if (supervisionSection) {
+  supervisionSection.innerHTML = `
     <div class="section-head split-head">
       <div>
         <p class="kicker">Supervision</p>
@@ -84,8 +88,6 @@ if (talksSection && !document.getElementById('supervision')) {
       <article class="timeline-item"><span class="timeline-label">2025</span><div><h3>Pedro Braga</h3><p>Master's research project</p></div></article>
       <article class="timeline-item"><span class="timeline-label">2024</span><div><h3>Eleanor Davison</h3><p>Master's research project</p></div></article>
     </div>`;
-
-  talksSection.parentNode.insertBefore(supervision, talksSection);
 }
 
 // Correct the two early-career journal papers and exclude the PhD thesis from publications.
@@ -118,15 +120,17 @@ if (contactSection) {
   const contactLinks = contactSection.querySelector('.contact-links');
   if (contactLinks) {
     const existingEmail = Array.from(contactLinks.children).find(el =>
-      el.textContent.trim().toLowerCase().startsWith('email')
+      el.textContent.trim().toLowerCase().startsWith('email') ||
+      el.getAttribute('href')?.startsWith('mailto:')
     );
+
     const emailLink = document.createElement('a');
     emailLink.href = 'mailto:jjt56@cam.ac.uk';
     emailLink.textContent = 'jjt56@cam.ac.uk';
 
     if (existingEmail) {
       existingEmail.replaceWith(emailLink);
-    } else if (!contactLinks.querySelector('a[href="mailto:jjt56@cam.ac.uk"]')) {
+    } else {
       contactLinks.appendChild(emailLink);
     }
   }
