@@ -90,6 +90,35 @@ if (supervisionSection) {
     </div>`;
 }
 
+// Keep the full talks, conferences and workshops record in sync.
+if (talksSection) {
+  talksSection.innerHTML = `
+    <div class="section-head split-head">
+      <div>
+        <p class="kicker">Talks</p>
+        <h2>Conferences, workshops and invited talks.</h2>
+      </div>
+      <p>Invited and contributed presentations spanning excitons, optoelectronics, two-dimensional materials and graphene.</p>
+    </div>
+
+    <div class="timeline">
+      <article class="timeline-item"><span class="timeline-label">2025 · Invited talk</span><div><h3>University of Bath</h3><p><strong>Harnessing excitons for optoelectronics</strong></p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2025 · Contributed oral</span><div><h3>NOEKS 17</h3><p><strong>Enhancing optoelectronic devices with exciton topology</strong> · Marburg, Germany</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2025 · Contributed oral</span><div><h3>CMQM 2025</h3><p><strong>Enhancing optoelectronic devices with exciton topology</strong> · Bristol, UK</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2025 · Contributed poster</span><div><h3>New Frontiers in Topological Materials</h3><p>Cambridge, UK</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2025 · Contributed oral</span><div><h3>APS 2025</h3><p><strong>Enhancing optoelectronic devices with exciton topology</strong> · Los Angeles, US</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2024 · Contributed poster</span><div><h3>Simons Collaboration on the Localization of Waves Annual Meeting</h3><p>New York, US</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2023 · Contributed oral</span><div><h3>Graphene 2023</h3><p><strong>Exciton optics and dynamics in organic/TMD heterostructures</strong> · Manchester, UK</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2023 · Contributed poster</span><div><h3>IWEPNM 2023</h3><p><strong>Exciton optics and dynamics in organic/TMD heterostructures</strong> · Kirchberg in Tirol, Austria</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2022 · Contributed poster</span><div><h3>Flatlands 2022</h3><p>Lanzarote</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2022 · Invited talk</span><div><h3>CMD 29</h3><p><strong>Interlayer Excitons in WS₂/Tetracene heterostructures</strong> · Manchester, UK</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2022 · Contributed oral</span><div><h3>CMQM 2022</h3><p><strong>Anisotropic diffusion and angle-resolved photoluminescence in transition-metal dichalcogenide monolayers</strong> · Bath, UK</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2019 · Contributed oral</span><div><h3>Frontiers in Condensed Matter Physics</h3><p><strong>Probing the electronic properties of twisted graphene layers with light</strong> · Bristol, UK</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2018 · Contributed poster</span><div><h3>Graphene Week 2018</h3><p>San Sebastián, Spain</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">2018 · Contributed poster</span><div><h3>Graphene 2018</h3><p>Dresden, Germany · Royal Society poster prize</p></div></article>
+    </div>`;
+}
+
 // Correct publication metadata that should override older static markup.
 Array.from(document.querySelectorAll('#publications .publication-item')).forEach(item => {
   const title = item.querySelector('h3')?.textContent.trim();
