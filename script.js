@@ -28,7 +28,7 @@ const addResearchFigure = (card, src, alt, extraClass = '') => {
 // Section 1
 addResearchFigure(
   researchCards[0],
-  'assets/fig24website.png',
+  'assets/fig14website.png',
   'Exciton and optical response illustration.',
   'research-figure-optics'
 );
@@ -52,7 +52,7 @@ addResearchFigure(
 // Section 4
 addResearchFigure(
   researchCards[3],
-  'assets/research-quantum-materials.jpg',
+  'assets/Fig1.pdf',
   'Illustration of topological and trivial exciton transport with phonon scattering.',
   'research-figure-quantum'
 );
