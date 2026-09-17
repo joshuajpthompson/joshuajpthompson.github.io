@@ -52,7 +52,7 @@ addResearchFigure(
 // Section 4
 addResearchFigure(
   researchCards[3],
-  'assets/Fig1.pdf',
+  'assets/schematic6.png',
   'Illustration of topological and trivial exciton transport with phonon scattering.',
   'research-figure-quantum'
 );
