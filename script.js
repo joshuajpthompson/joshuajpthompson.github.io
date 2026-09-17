@@ -1,6 +1,10 @@
 const nav = document.querySelector('.site-nav');
 const talksSection = document.getElementById('talks');
 
+// Update homepage hero title.
+const heroTitle = document.querySelector('.hero-copy h1');
+if (heroTitle) heroTitle.textContent = 'Where light and energy meet in materials';
+
 // Ensure Collaborators and Supervision appear in the main navigation.
 if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   const talksLink = nav.querySelector('a[href="#talks"]');
