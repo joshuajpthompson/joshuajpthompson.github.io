@@ -1,6 +1,10 @@
 const nav = document.querySelector('.site-nav');
 const talksSection = document.getElementById('talks');
 
+// Keep the homepage headline on the current wording.
+const heroTitle = document.querySelector('.hero-copy h1');
+if (heroTitle) heroTitle.textContent = 'Where light and energy meet in materials';
+
 // Ensure Collaborators and Supervision appear in the main navigation.
 if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   const talksLink = nav.querySelector('a[href="#talks"]');
@@ -21,16 +25,17 @@ if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   }
 }
 
-// Add research figures to cards 3 and 4.
+// Add research figures to cards 3 and 4 without upscaling or cropping them.
 const researchCards = document.querySelectorAll('#research .research-card');
-const addResearchFigure = (card, src, alt) => {
+const addResearchFigure = (card, src, alt, extraClass = '') => {
   if (!card || card.querySelector('.research-figure')) return;
   const figure = document.createElement('figure');
-  figure.className = 'research-figure';
+  figure.className = `research-figure ${extraClass}`.trim();
   const img = document.createElement('img');
   img.src = src;
   img.alt = alt;
   img.loading = 'lazy';
+  img.decoding = 'async';
   figure.appendChild(img);
   const heading = card.querySelector('h3');
   if (heading) card.insertBefore(figure, heading);
@@ -39,12 +44,14 @@ const addResearchFigure = (card, src, alt) => {
 addResearchFigure(
   researchCards[2],
   'assets/research-phonons.jpg',
-  'Exciton phonon bottleneck diagram showing bright, dark and gray exciton branches.'
+  'Exciton phonon bottleneck diagram showing bright, dark and gray exciton branches.',
+  'research-figure-native'
 );
 addResearchFigure(
   researchCards[3],
   'assets/research-quantum-materials.jpg',
-  'Illustration of topological and trivial exciton transport with phonon scattering.'
+  'Illustration of topological and trivial exciton transport with phonon scattering.',
+  'research-figure-wide'
 );
 
 const researchFigureStyle = document.createElement('style');
@@ -55,12 +62,26 @@ researchFigureStyle.textContent = `
     overflow: hidden;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(237,169,137,.12);
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
   }
   .research-card .research-figure img {
     display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: contain;
+  }
+  .research-card .research-figure-native img {
+    width: 396px;
+    max-width: 100%;
+  }
+  .research-card .research-figure-wide img {
     width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
   }
   .research-card:has(.research-figure) h3 {
     margin-top: 18px;
