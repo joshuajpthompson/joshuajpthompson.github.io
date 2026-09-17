@@ -90,9 +90,14 @@ if (supervisionSection) {
     </div>`;
 }
 
-// Correct the two early-career journal papers and exclude the PhD thesis from publications.
+// Correct publication metadata that should override older static markup.
 Array.from(document.querySelectorAll('#publications .publication-item')).forEach(item => {
   const title = item.querySelector('h3')?.textContent.trim();
+
+  if (title === 'Twist Angle Tuning of Moiré Exciton Polaritons in van der Waals Heterostructures') {
+    const authors = item.querySelector('p');
+    if (authors) authors.innerHTML = 'J. M. Fitzgerald, <strong>J. J. P. Thompson</strong>, E. Malic.';
+  }
 
   if (title === 'Infrared conductivity of twisted bilayer graphene') {
     item.innerHTML = `
