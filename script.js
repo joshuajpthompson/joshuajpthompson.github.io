@@ -1,10 +1,9 @@
 const nav = document.querySelector('.site-nav');
 const talksSection = document.getElementById('talks');
 
-// Add Collaborators and Supervision to the main navigation.
+// Ensure Collaborators and Supervision appear in the main navigation.
 if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   const talksLink = nav.querySelector('a[href="#talks"]');
-
   const collaboratorsLink = document.createElement('a');
   collaboratorsLink.href = '#collaborators';
   collaboratorsLink.textContent = 'Collaborators';
@@ -21,12 +20,13 @@ if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   }
 }
 
-// Add a collaborators section using the site's existing timeline styling.
-if (talksSection && !document.getElementById('collaborators')) {
-  const collaborators = document.createElement('section');
-  collaborators.id = 'collaborators';
-  collaborators.className = 'section section-wrap';
-  collaborators.innerHTML = `
+// Create the collaborators section if needed, then keep its list in sync.
+let collaboratorsSection = document.getElementById('collaborators');
+if (talksSection && !collaboratorsSection) {
+  collaboratorsSection = document.createElement('section');
+  collaboratorsSection.id = 'collaborators';
+  collaboratorsSection.className = 'section section-wrap';
+  collaboratorsSection.innerHTML = `
     <div class="section-head split-head">
       <div>
         <p class="kicker">Collaborators</p>
@@ -37,8 +37,14 @@ if (talksSection && !document.getElementById('collaborators')) {
         low-dimensional materials, optoelectronics and quantum materials.
       </p>
     </div>
+    <div class="timeline"></div>`;
+  talksSection.parentNode.insertBefore(collaboratorsSection, talksSection);
+}
 
-    <div class="timeline">
+if (collaboratorsSection) {
+  const timeline = collaboratorsSection.querySelector('.timeline');
+  if (timeline) {
+    timeline.innerHTML = `
       <article class="timeline-item"><span class="timeline-label">Bartomeu Monserrat</span><div><h3>University of Cambridge</h3><p>United Kingdom</p></div></article>
       <article class="timeline-item"><span class="timeline-label">Ermin Malic</span><div><h3>Philipps-Universität Marburg</h3><p>Germany</p></div></article>
       <article class="timeline-item"><span class="timeline-label">Wojciech J. Jankowski</span><div><h3>University of Cambridge</h3><p>United Kingdom</p></div></article>
@@ -46,14 +52,13 @@ if (talksSection && !document.getElementById('collaborators')) {
       <article class="timeline-item"><span class="timeline-label">Paulina Płochocka</span><div><h3>Wrocław University of Science and Technology</h3><p>Poland</p></div></article>
       <article class="timeline-item"><span class="timeline-label">Michał Baranowski</span><div><h3>Wrocław University of Science and Technology</h3><p>Poland</p></div></article>
       <article class="timeline-item"><span class="timeline-label">Libai Huang</span><div><h3>Purdue University</h3><p>United States</p></div></article>
-      <article class="timeline-item"><span class="timeline-label">Letian Dou</span><div><h3>Purdue University</h3><p>United States</p></div></article>
-      <article class="timeline-item"><span class="timeline-label">Witlef Wieczorek</span><div><h3>Chalmers University of Technology</h3><p>Sweden</p></div></article>
-    </div>`;
-
-  talksSection.parentNode.insertBefore(collaborators, talksSection);
+      <article class="timeline-item"><span class="timeline-label">Richard Friend</span><div><h3>University of Cambridge</h3><p>United Kingdom</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">Marcin Mucha-Kruczyński</span><div><h3>University of Bath</h3><p>United Kingdom</p></div></article>
+      <article class="timeline-item"><span class="timeline-label">Aran García-Lekue</span><div><h3>University of the Basque Country (UPV/EHU) / Donostia International Physics Center</h3><p>Spain</p></div></article>`;
+  }
 }
 
-// Add supervision section directly after collaborators and before talks.
+// Add supervision section directly before talks if it is missing.
 if (talksSection && !document.getElementById('supervision')) {
   const supervision = document.createElement('section');
   supervision.id = 'supervision';
