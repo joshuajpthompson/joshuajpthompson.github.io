@@ -88,6 +88,29 @@ if (talksSection && !document.getElementById('supervision')) {
   talksSection.parentNode.insertBefore(supervision, talksSection);
 }
 
+// Update contact section copy and public email address.
+const contactSection = document.getElementById('contact');
+if (contactSection) {
+  const contactHeading = contactSection.querySelector('h2');
+  if (contactHeading) contactHeading.textContent = 'Where to find me.';
+
+  const contactLinks = contactSection.querySelector('.contact-links');
+  if (contactLinks) {
+    const existingEmail = Array.from(contactLinks.children).find(el =>
+      el.textContent.trim().toLowerCase().startsWith('email')
+    );
+    const emailLink = document.createElement('a');
+    emailLink.href = 'mailto:jjt56@cam.ac.uk';
+    emailLink.textContent = 'jjt56@cam.ac.uk';
+
+    if (existingEmail) {
+      existingEmail.replaceWith(emailLink);
+    } else {
+      contactLinks.appendChild(emailLink);
+    }
+  }
+}
+
 const menuButton = document.querySelector('.menu-button');
 if (menuButton && nav) {
   menuButton.addEventListener('click', () => {
