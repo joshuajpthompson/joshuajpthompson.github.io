@@ -25,7 +25,7 @@ if (nav && !nav.querySelector('a[href="#collaborators"]')) {
   }
 }
 
-// Add research figures to cards 3 and 4 without upscaling or cropping them.
+// Add research figures to cards 2, 3 and 4 without upscaling or cropping them.
 const researchCards = document.querySelectorAll('#research .research-card');
 const addResearchFigure = (card, src, alt, extraClass = '') => {
   if (!card || card.querySelector('.research-figure')) return;
@@ -41,6 +41,12 @@ const addResearchFigure = (card, src, alt, extraClass = '') => {
   if (heading) card.insertBefore(figure, heading);
 };
 
+addResearchFigure(
+  researchCards[1],
+  'assets/research-hybrid-materials.webp',
+  'Molecular structure illustrating a low-dimensional hybrid material.',
+  'research-figure-native research-figure-hybrid'
+);
 addResearchFigure(
   researchCards[2],
   'assets/research-phonons.jpg',
@@ -77,7 +83,13 @@ researchFigureStyle.textContent = `
     object-fit: contain;
   }
   .research-card .research-figure-native img {
-    width: 396px;
+    max-width: 396px;
+  }
+  .research-card .research-figure-hybrid {
+    background: transparent;
+  }
+  .research-card .research-figure-hybrid img {
+    width: 240px;
     max-width: 100%;
   }
   .research-card .research-figure-wide img {
