@@ -34,7 +34,7 @@ addResearchFigure(
 
 addResearchFigure(
   researchCards[2],
-  'assets/research-phonons.png',
+  'assets/fig34website.png',
   'Exciton phonon bottleneck diagram showing bright, dark and gray exciton branches.',
   'research-figure-phonons'
 );
