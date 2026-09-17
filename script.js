@@ -88,6 +88,27 @@ if (talksSection && !document.getElementById('supervision')) {
   talksSection.parentNode.insertBefore(supervision, talksSection);
 }
 
+// Correct the two early-career journal papers and exclude the PhD thesis from publications.
+Array.from(document.querySelectorAll('#publications .publication-item')).forEach(item => {
+  const title = item.querySelector('h3')?.textContent.trim();
+
+  if (title === 'Infrared conductivity of twisted bilayer graphene') {
+    item.innerHTML = `
+      <div class="publication-meta">2019 · Physical Review B · <a href="https://doi.org/10.1103/PhysRevB.99.085420" target="_blank" rel="noreferrer">paper ↗</a></div>
+      <div><h3>Valley-polarized tunneling currents in bilayer graphene tunneling transistors</h3><p><strong>J. J. P. Thompson</strong>, D. J. Leech, M. Mucha-Kruczyński.</p></div>`;
+  }
+
+  if (title === 'Tunable infrared optoelectronic devices based on graphene') {
+    item.innerHTML = `
+      <div class="publication-meta">2018 · Physical Review Applied · <a href="https://doi.org/10.1103/PhysRevApplied.10.034014" target="_blank" rel="noreferrer">paper ↗</a></div>
+      <div><h3>Negative Differential Resistance in van der Waals Heterostructures Due to Moiré-Induced Spectral Reconstruction</h3><p>D. J. Leech, <strong>J. J. P. Thompson</strong>, M. Mucha-Kruczyński.</p></div>`;
+  }
+
+  if (title === 'Electronic phenomena in graphene based van der Waals heterostructures') {
+    item.remove();
+  }
+});
+
 // Update contact section copy and public email address.
 const contactSection = document.getElementById('contact');
 if (contactSection) {
@@ -105,7 +126,7 @@ if (contactSection) {
 
     if (existingEmail) {
       existingEmail.replaceWith(emailLink);
-    } else {
+    } else if (!contactLinks.querySelector('a[href="mailto:jjt56@cam.ac.uk"]')) {
       contactLinks.appendChild(emailLink);
     }
   }
