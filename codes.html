@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Computational tools and workflows used and developed by Joshua J. P. Thompson.">
+  <meta name="theme-color" content="#27323d">
+  <title>Codes | Joshua J. P. Thompson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Joshua Thompson home">
+      <span class="brand-mark">JT</span>
+      <span class="brand-copy">
+        <strong>Joshua J. P. Thompson</strong>
+        <small>Materials &amp; Optoelectronic Theory</small>
+      </span>
+    </a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="codes.html" class="active" aria-current="page">Codes</a>
+      <a href="collaborators.html">Collaborators</a>
+      <a href="supervision.html">Supervision</a>
+      <a href="talks.html">Talks</a>
+      <a href="cv.html">CV</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero section-wrap">
+      <p class="kicker">Codes</p>
+      <h1>Computational tools &amp; workflows.</h1>
+      <p class="hero-lead">Research software for electronic structure, excitons, optical response, phonons, electron–phonon coupling and materials modelling.</p>
+    </section>
+    <section class="section codes-section">
+      <div class="section-wrap">
+        <div class="code-showcase">
+          <div class="code-copy"><p class="code-status">Repository link coming soon</p><h3>Research code on GitHub</h3><p>This page is ready for the repository you want to feature. Once linked, code, example workflows and documentation can live here.</p><a class="button button-warm disabled-link" href="#" aria-disabled="true">GitHub repository →</a></div>
+          <div class="terminal"><div class="terminal-top"><span></span><span></span><span></span></div><pre><code>$ materials-workflow --optics
+
+electronic structure
+    ↓
+excitonic Hamiltonian
+    ↓
+phonons & interactions
+    ↓
+optical / transport response
+    ↓
+compare with experiment
+
+✓ analysis complete</code></pre></div>
+        </div>
+        <div class="code-grid">
+          <article><span>01</span><h3>Electronic structure</h3><p>Quantum ESPRESSO, Wannier90 and ABINIT workflows for electronic and quantum-material properties.</p></article>
+          <article><span>02</span><h3>Excitons &amp; optics</h3><p>Many-body and model-Hamiltonian approaches for exciton energies, wavefunctions, selection rules and optical spectra.</p></article>
+          <article><span>03</span><h3>Phonons &amp; transport</h3><p>Phonon, electron–phonon and exciton–phonon calculations linked to dynamics, linewidths and transport.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer section-wrap"><p>© <span id="year"></span> Joshua J. P. Thompson</p><p>Built for GitHub Pages.</p></footer>
+</body>
+</html>
