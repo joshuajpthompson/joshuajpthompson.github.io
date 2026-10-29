@@ -273,12 +273,14 @@ h3 { margin:0 0 10px; line-height:1.25; }
 .research-detail-section { padding-top: 68px; }
 .research-detail-layout {
   display: grid;
-  grid-template-columns: minmax(260px, .85fr) minmax(0, 1.6fr);
-  gap: clamp(32px, 6vw, 100px);
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
   align-items: start;
 }
 .research-detail-aside {
-  padding: 16px;
+  width: 100%;
+  max-width: 260px;
+  padding: 12px;
   border-radius: var(--radius);
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(237,169,137,.14);
@@ -288,7 +290,7 @@ h3 { margin:0 0 10px; line-height:1.25; }
   display: block;
   width: 100%;
   height: auto;
-  max-height: 380px;
+  max-height: 220px;
   object-fit: contain;
   border-radius: 16px;
 }
@@ -356,7 +358,7 @@ h3 { margin:0 0 10px; line-height:1.25; }
 .research-topic-nav a:hover { border-color: var(--accent-strong); color: var(--accent-strong); }
 @media (max-width: 900px) {
   .research-detail-layout { grid-template-columns: 1fr; }
-  .research-detail-aside { max-width: 520px; }
+  .research-detail-aside { max-width: 260px; }
 }
 @media (max-width: 760px) {
   .research-paper-list li { grid-template-columns: 1fr; gap: 9px; }
@@ -366,4 +368,54 @@ h3 { margin:0 0 10px; line-height:1.25; }
 @media (prefers-reduced-motion: reduce) {
   .research-card-link { transition: none; }
   .research-card-link:hover { transform: none; }
+}
+
+/* Press coverage on each research topic, above the publications */
+.research-press {
+  padding-top: 76px;
+}
+.research-press .section-head {
+  margin-bottom: 32px;
+}
+.research-press h2 {
+  font-size: clamp(2.5rem, 4vw, 4.3rem);
+}
+.research-press-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+.research-press-list li {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.research-press-meta {
+  display: block;
+  color: var(--accent-strong);
+  font-size: .83rem;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+.research-press-list h3 {
+  font-size: 1.22rem;
+  margin-bottom: 8px;
+}
+.research-press-list h3 a {
+  text-decoration: none;
+}
+.research-press-list h3 a:hover {
+  color: var(--accent-strong);
+}
+.research-press-list p {
+  max-width: 810px;
+  margin: 0 0 9px;
+  color: var(--muted);
+}
+.research-press-list a:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .research-press { padding-top: 52px; }
 }
