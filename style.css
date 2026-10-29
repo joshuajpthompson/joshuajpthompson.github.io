@@ -226,3 +226,144 @@ h3 { margin:0 0 10px; line-height:1.25; }
   .site-nav.open { display:flex; }
   .site-nav a { padding:8px 2px; }
 }
+
+/* Clickable research overview cards */
+.research-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.research-card-link:hover {
+  transform: translateY(-4px);
+  border-color: rgba(237,169,137,.46);
+  background: rgba(255,255,255,.055);
+  box-shadow: 0 18px 36px rgba(9,14,18,.18);
+}
+.research-card-link:focus-visible,
+.research-topic-nav a:focus-visible,
+.research-back-link:focus-visible,
+.research-paper-list a:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 4px;
+}
+.research-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: var(--accent-strong);
+  font-weight: 700;
+  font-size: .9rem;
+}
+.research-card-link:hover .research-card-cta { text-decoration: underline; }
+
+/* Expanded research topic pages */
+.research-back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: var(--accent-strong);
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.research-back-link:hover { text-decoration: underline; }
+.research-detail-header h1 { max-width: 1120px; }
+.research-detail-header .hero-lead { max-width: 900px; }
+.research-detail-section { padding-top: 68px; }
+.research-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, .85fr) minmax(0, 1.6fr);
+  gap: clamp(32px, 6vw, 100px);
+  align-items: start;
+}
+.research-detail-aside {
+  padding: 16px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(237,169,137,.14);
+}
+.research-detail-aside figure { margin: 0; }
+.research-detail-aside img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+.research-detail-aside figcaption {
+  padding: 14px 8px 4px;
+  font-size: .83rem;
+  color: var(--muted);
+}
+.research-detail-body h2 { margin: 0 0 28px; font-size: clamp(2.2rem, 3vw, 3.2rem); }
+.research-detail-body p {
+  max-width: 800px;
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+.research-publications { padding-top: 72px; }
+.research-publications .section-head { margin-bottom: 35px; }
+.research-publications h2 { font-size: clamp(2.5rem, 4vw, 4.3rem); }
+.research-paper-list {
+  list-style: none;
+  margin: 0 0 36px;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.research-paper-list li {
+  display: grid;
+  grid-template-columns: minmax(170px, 230px) 1fr;
+  gap: 20px 38px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--line);
+}
+.research-paper-meta {
+  color: var(--accent-strong);
+  font-size: .84rem;
+  font-weight: 700;
+}
+.research-paper-list h3 { margin: 0 0 7px; font-size: 1.22rem; }
+.research-paper-list h3 a { text-decoration: none; }
+.research-paper-list h3 a:hover { color: var(--accent-strong); }
+.research-paper-list p { color: var(--muted); margin: 0 0 9px; }
+.research-paper-link {
+  color: var(--accent-strong);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .88rem;
+}
+.research-paper-link:hover { text-decoration: underline; }
+.research-more-publications { margin-top: 28px; }
+.research-topic-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 36px 0 0;
+  border-top: 1px solid var(--line);
+}
+.research-topic-nav a {
+  display: inline-flex;
+  padding: 10px 17px;
+  border: 1px solid rgba(237,169,137,.3);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: .88rem;
+}
+.research-topic-nav a:hover { border-color: var(--accent-strong); color: var(--accent-strong); }
+@media (max-width: 900px) {
+  .research-detail-layout { grid-template-columns: 1fr; }
+  .research-detail-aside { max-width: 520px; }
+}
+@media (max-width: 760px) {
+  .research-paper-list li { grid-template-columns: 1fr; gap: 9px; }
+  .research-detail-body p { font-size: 1rem; }
+  .research-publications { padding-top: 55px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .research-card-link { transition: none; }
+  .research-card-link:hover { transform: none; }
+}
