@@ -22,7 +22,7 @@ if (year) year.textContent = new Date().getFullYear();
 // Privacy-friendly site statistics: Cloudflare Web Analytics.
 // Set this to the *site token* copied from Cloudflare Web Analytics > Manage site.
 // Leave it empty to disable analytics entirely. Do NOT paste Cloudflare API tokens.
-const cloudflareWebAnalyticsSiteToken = '';
+const cloudflareWebAnalyticsSiteToken = '4c95ed921bca4c9a8600873c84ab20d3';
 
 if (cloudflareWebAnalyticsSiteToken.trim()) {
   const cloudflareBeacon = document.createElement('script');
